@@ -4,3 +4,5 @@ project(MyDataStructures)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(MyDataStructures main.cpp)
+
+add_subdirectory(Google_tests)
