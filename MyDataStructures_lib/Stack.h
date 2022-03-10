@@ -18,7 +18,7 @@ namespace myds {
         }
 
         T pop() {
-            if ( stack->getSize() == 0 ) {
+            if ( isEmpty() ) {
                 std::cerr << "Nothing to pop." << std::endl;
                 return NULL;
             }
@@ -28,7 +28,7 @@ namespace myds {
         }
 
         T peek() {
-            if ( stack->getSize() == 0 ) {
+            if ( isEmpty() ) {
                 std::cerr << "Nothing to peek." << std::endl;
                 return NULL;
             }
