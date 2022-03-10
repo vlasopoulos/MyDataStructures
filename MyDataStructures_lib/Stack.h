@@ -12,8 +12,6 @@ namespace myds {
             stack = std::make_unique<LinkedList<T>>();
         }
 
-        Stack(const Stack& other) = default;
-
         void push(T data) {
             stack->addLast(data);
         }
