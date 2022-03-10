@@ -10,6 +10,13 @@ TEST(StackSuite, pushPeekSizePopTest) {
     EXPECT_EQ(s->getSize(), 0);
 }
 
+TEST(StackSuite, correctOrderTest) {
+    auto s = std::make_unique<myds::Stack<int>>();
+    s->push(5);
+    s->push(6);
+    EXPECT_EQ(s->peek(), 6);
+}
+
 TEST(StackSuite, isEmptyTest) {
     auto s = std::make_unique<myds::Stack<int>>();
     EXPECT_EQ(s->isEmpty(), true);
