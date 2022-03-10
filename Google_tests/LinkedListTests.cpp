@@ -55,3 +55,24 @@ TEST(linkedListSuite, addAndDeleteFromListTest){
     EXPECT_EQ(l->getSize(),2);
     EXPECT_EQ(l->get(1), 5);
 }
+
+TEST(linkedListSuite, addOutOfBoundsTest){
+    testing::internal::CaptureStderr();
+    auto l = std::make_unique<myds::LinkedList<int>>();
+    l->add(1, 1);
+    EXPECT_EQ(testing::internal::GetCapturedStderr(), "Index out of bounds.\n");
+}
+
+TEST(linkedListSuite, deleteOutOfBoundsTest) {
+    testing::internal::CaptureStderr();
+    auto l = std::make_unique<myds::LinkedList<int>>();
+    l->deleteAt(1);
+    EXPECT_EQ(testing::internal::GetCapturedStderr(), "Index out of bounds.\n");
+}
+
+TEST(linkedListSuite, getOutOfBoundsTest) {
+    testing::internal::CaptureStderr();
+    auto l = std::make_unique<myds::LinkedList<int>>();
+    l->get(1);
+    EXPECT_EQ(testing::internal::GetCapturedStderr(), "Index out of bounds.\n");
+}
