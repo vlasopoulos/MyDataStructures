@@ -32,14 +32,14 @@ TEST(QueueSuite, clearTest) {
     EXPECT_EQ(s->isEmpty(), true);
 }
 
-TEST(QueueSuite, emptyStackPopTest) {
+TEST(QueueSuite, emptyQueuePopTest) {
     testing::internal::CaptureStderr();
     auto s = std::make_unique<myds::Queue<int>>();
     s->pop();
     EXPECT_EQ(testing::internal::GetCapturedStderr(), "Nothing to pop.\n");
 }
 
-TEST(QueueSuite, emptyStackPeekTest) {
+TEST(QueueSuite, emptyQueuePeekTest) {
     testing::internal::CaptureStderr();
     auto s = std::make_unique<myds::Queue<int>>();
     s->peek();
