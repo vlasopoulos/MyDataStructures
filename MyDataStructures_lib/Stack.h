@@ -35,6 +35,10 @@ namespace myds {
             return stack->get(stack->getSize() - 1);
         }
 
+        void clear() {
+            while (!isEmpty()) pop();
+        }
+
         int getSize(){
             return stack->getSize();
         }

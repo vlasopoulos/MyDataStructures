@@ -35,6 +35,10 @@ namespace myds {
             return queue->get(queue->getSize() - 1);
         }
 
+        void clear() {
+            while (!isEmpty()) pop();
+        }
+
         int getSize(){
             return queue->getSize();
         }

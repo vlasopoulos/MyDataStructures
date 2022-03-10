@@ -24,6 +24,14 @@ TEST(QueueSuite, isEmptyTest) {
     EXPECT_NE(s->isEmpty(), true);
 }
 
+TEST(QueueSuite, clearTest) {
+    auto s = std::make_unique<myds::Queue<int>>();
+    s->push(4);
+    s->push(5);
+    s->clear();
+    EXPECT_EQ(s->isEmpty(), true);
+}
+
 TEST(QueueSuite, emptyStackPopTest) {
     testing::internal::CaptureStderr();
     auto s = std::make_unique<myds::Queue<int>>();
