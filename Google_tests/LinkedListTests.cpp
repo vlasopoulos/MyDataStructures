@@ -30,7 +30,13 @@ TEST(linkedListNodeSuite, copyConstructorRightNodeTest){
     EXPECT_EQ(n->next, n3->next);
 }
 
-TEST(linkedListSuite, createAndAddToListTest){
+TEST(linkedListSuite, addToListWithIndexAndGetTest){
+    auto l = std::make_unique<myds::LinkedList<int>>();
+    l->add(0, 5);
+    EXPECT_EQ(l->get(0), 5);
+}
+
+TEST(linkedListSuite, createAddToList_GetFromListTest){
     auto l = std::make_unique<myds::LinkedList<int>>();
     l->add(5);
     EXPECT_EQ(l->get(0), 5);
