@@ -1,20 +1,20 @@
 #include "gtest/gtest.h"
 #include "LinkedList.h"
 
-TEST(linkedListNodeSuite, setData_getData_test){
+TEST(LinkedListNodeSuite, setData_getData_test){
     auto n = std::make_unique<myds::Node<int>>();
     n->data = 5;
     EXPECT_EQ(n->data,5);
 }
 
-TEST(linkedListNodeSuite, copyConstructorDataTest){
+TEST(LinkedListNodeSuite, copyConstructorDataTest){
     auto n = std::make_shared<myds::Node<int>>();
     n->data = 5;
     auto n2 = n;
     EXPECT_EQ(n->data,n2->data);
 }
 
-TEST(linkedListNodeSuite, setRightNodeTest){
+TEST(LinkedListNodeSuite, setRightNodeTest){
     auto n = std::make_unique<myds::Node<int>>();
     auto n2 = std::make_shared<myds::Node<int>>();
     n->next = n2;
@@ -22,7 +22,7 @@ TEST(linkedListNodeSuite, setRightNodeTest){
     EXPECT_NE(n->next, n2->next);
 }
 
-TEST(linkedListNodeSuite, copyConstructorRightNodeTest){
+TEST(LinkedListNodeSuite, copyConstructorRightNodeTest){
     auto n = std::make_shared<myds::Node<int>>();
     auto n2 = std::make_shared<myds::Node<int>>();
     n->next = n2;
@@ -30,13 +30,13 @@ TEST(linkedListNodeSuite, copyConstructorRightNodeTest){
     EXPECT_EQ(n->next, n3->next);
 }
 
-TEST(linkedListSuite, addToListWithIndexAndGetTest){
+TEST(LinkedListSuite, addToListWithIndexAndGetTest){
     auto l = std::make_unique<myds::LinkedList<int>>();
     l->add(0, 5);
     EXPECT_EQ(l->get(0), 5);
 }
 
-TEST(linkedListSuite, createAddToList_GetFromListTest){
+TEST(LinkedListSuite, createAddToList_GetFromListTest){
     auto l = std::make_unique<myds::LinkedList<int>>();
     l->add(5);
     EXPECT_EQ(l->get(0), 5);
@@ -52,12 +52,12 @@ TEST(linkedListSuite, createAddToList_GetFromListTest){
     EXPECT_EQ(l->getSize(), 4);
 }
 
-TEST(linkedListSuite, isEmptyTest) {
+TEST(LinkedListSuite, isEmptyTest) {
     auto l = std::make_unique<myds::LinkedList<int>>();
     EXPECT_EQ(l->isEmpty(), true);
 }
 
-TEST(linkedListSuite, addAndDeleteFromListTest){
+TEST(LinkedListSuite, addAndDeleteFromListTest){
     auto l = std::make_unique<myds::LinkedList<int>>();
     l->add(3);
     l->add(4);
@@ -67,21 +67,21 @@ TEST(linkedListSuite, addAndDeleteFromListTest){
     EXPECT_EQ(l->get(1), 5);
 }
 
-TEST(linkedListSuite, addOutOfBoundsTest){
+TEST(LinkedListSuite, addOutOfBoundsTest){
     testing::internal::CaptureStderr();
     auto l = std::make_unique<myds::LinkedList<int>>();
     l->add(1, 1);
     EXPECT_EQ(testing::internal::GetCapturedStderr(), "Index out of bounds.\n");
 }
 
-TEST(linkedListSuite, deleteOutOfBoundsTest) {
+TEST(LinkedListSuite, deleteOutOfBoundsTest) {
     testing::internal::CaptureStderr();
     auto l = std::make_unique<myds::LinkedList<int>>();
     l->deleteAt(1);
     EXPECT_EQ(testing::internal::GetCapturedStderr(), "Index out of bounds.\n");
 }
 
-TEST(linkedListSuite, getOutOfBoundsTest) {
+TEST(LinkedListSuite, getOutOfBoundsTest) {
     testing::internal::CaptureStderr();
     auto l = std::make_unique<myds::LinkedList<int>>();
     l->get(1);
