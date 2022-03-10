@@ -2,7 +2,7 @@
 #include "LinkedList.h"
 
 TEST(linkedListNodeSuite, setData_getData_test){
-    auto n = std::make_shared<myds::Node<int>>();
+    auto n = std::make_unique<myds::Node<int>>();
     n->data = 5;
     EXPECT_EQ(n->data,5);
 }
@@ -15,7 +15,7 @@ TEST(linkedListNodeSuite, copyConstructorDataTest){
 }
 
 TEST(linkedListNodeSuite, setRightNodeTest){
-    auto n = std::make_shared<myds::Node<int>>();
+    auto n = std::make_unique<myds::Node<int>>();
     auto n2 = std::make_shared<myds::Node<int>>();
     n->next = n2;
     EXPECT_EQ(n->next,n2);
@@ -44,6 +44,11 @@ TEST(linkedListSuite, createAndAddToListTest){
     EXPECT_EQ(l->get(2), 5);
     EXPECT_EQ(l->get(3), 6);
     EXPECT_EQ(l->getSize(), 4);
+}
+
+TEST(linkedListSuite, isEmptyTest) {
+    auto l = std::make_unique<myds::LinkedList<int>>();
+    EXPECT_EQ(l->isEmpty(), true);
 }
 
 TEST(linkedListSuite, addAndDeleteFromListTest){
