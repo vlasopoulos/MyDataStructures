@@ -62,3 +62,27 @@ TEST(BSTSuite, removeNotFoundTest) {
     bst->remove(2);
     EXPECT_EQ(testing::internal::GetCapturedStderr(), "Data not found.\n");
 }
+
+TEST(BSTSuite, inOrderPrintTest){
+    testing::internal::CaptureStdout();
+    auto bst = std::make_unique<myds::BinarySearchTree<int>>();
+    bst->insert(4, 3, 6, 5, 2, 7);
+    bst->print(myds::Traversal::INORDER);
+    EXPECT_EQ(testing::internal::GetCapturedStdout(),"2 3 4 5 6 7 \n");
+}
+
+TEST(BSTSuite, preOrderPrintTest){
+    testing::internal::CaptureStdout();
+    auto bst = std::make_unique<myds::BinarySearchTree<int>>();
+    bst->insert(4, 3, 6, 5, 2, 7);
+    bst->print(myds::Traversal::PREORDER);
+    EXPECT_EQ(testing::internal::GetCapturedStdout(),"4 3 2 6 5 7 \n");
+}
+
+TEST(BSTSuite, postOrderPrintTest){
+    testing::internal::CaptureStdout();
+    auto bst = std::make_unique<myds::BinarySearchTree<int>>();
+    bst->insert(4, 3, 6, 5, 2, 7);
+    bst->print(myds::Traversal::POSTORDER);
+    EXPECT_EQ(testing::internal::GetCapturedStdout(),"2 3 5 7 6 4 \n");
+}

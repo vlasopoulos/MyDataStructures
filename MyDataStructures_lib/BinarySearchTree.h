@@ -5,6 +5,8 @@
 
 namespace myds{
 
+    enum class Traversal { INORDER, PREORDER, POSTORDER };
+
     template <typename T>
     struct TreeNode {
         T data;
@@ -116,6 +118,52 @@ namespace myds{
 
         void setAllowDuplicates(bool b) {
             allowDuplicates = b;
+        }
+
+        void print() {
+            printInOrder(root);
+        }
+
+        void print(Traversal t) {
+            switch (t) {
+                case Traversal::INORDER:
+                    printInOrder(root);
+                    break;
+                case Traversal::PREORDER:
+                    printPreOrder(root);
+                    break;
+                case Traversal::POSTORDER:
+                    printPostOrder(root);
+                    break;
+                default:
+                    printInOrder(root);
+                    break;
+            }
+            std::cout << std::endl;
+        }
+
+        void printInOrder(std::shared_ptr<TreeNode<T>> currentNode) {
+            if (currentNode != nullptr) {
+                printInOrder(currentNode->leftChild);
+                std::cout << currentNode->data << ' ';
+                printInOrder(currentNode->rightChild);
+            }
+        }
+
+        void printPreOrder(std::shared_ptr<TreeNode<T>> currentNode) {
+            if (currentNode != nullptr) {
+                std::cout << currentNode->data << ' ';
+                printPreOrder(currentNode->leftChild);
+                printPreOrder(currentNode->rightChild);
+            }
+        }
+
+        void printPostOrder(std::shared_ptr<TreeNode<T>> currentNode) {
+            if (currentNode != nullptr) {
+                printPostOrder(currentNode->leftChild);
+                printPostOrder(currentNode->rightChild);
+                std::cout << currentNode->data << ' ';
+            }
         }
 
     private:
