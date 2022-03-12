@@ -102,6 +102,13 @@ namespace myds{
             }
         }
 
+        //Variadic overload of insert
+        template <std::same_as<T> ... Ts>
+        void remove(const T& data, const Ts& ... ts) {
+            remove(data);
+            remove(ts...);
+        }
+
         bool contains(const T& data) const{
             auto currentNode = root;
             while (currentNode != nullptr && currentNode->data != data) {

@@ -105,3 +105,12 @@ TEST(BSTSuite, noDuplicatesTest) {
     bst->print();
     EXPECT_EQ(testing::internal::GetCapturedStdout(),"2 3 4 5 6 \n");
 }
+
+TEST(BSTSuite, variadicRemoveTest) {
+    testing::internal::CaptureStdout();
+    auto bst = std::make_unique<myds::BinarySearchTree<int>>();
+    bst->insert( 4, 3, 5, 6, 2, 9, 7, 1, 8);
+    bst->remove(2,9, 4);
+    bst->print();
+    EXPECT_EQ(testing::internal::GetCapturedStdout(),"1 3 5 6 7 8 \n");
+}
