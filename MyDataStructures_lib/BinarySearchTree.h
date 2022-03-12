@@ -17,6 +17,7 @@ namespace myds{
     public:
 
         void insert(const T& data) {
+
             if (root == nullptr) {
                 root = std::make_shared<TreeNode<T>>();
                 root->data = data;
@@ -27,7 +28,10 @@ namespace myds{
                     parentNode = currentNode;
                     if (data < currentNode->data) {
                         currentNode = currentNode->leftChild;
-                    } else {
+                    } else if (data > currentNode->data){
+                        currentNode = currentNode->rightChild;
+                    } else { //duplicate entry
+                        if (!allowDuplicates) return;
                         currentNode = currentNode->rightChild;
                     }
                 }
@@ -110,8 +114,13 @@ namespace myds{
             else return true;
         }
 
+        void setAllowDuplicates(bool b) {
+            allowDuplicates = b;
+        }
+
     private:
         std::shared_ptr<TreeNode<T>> root = nullptr;
+        bool allowDuplicates = false;
     };
 }
 
