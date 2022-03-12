@@ -96,3 +96,12 @@ TEST(BSTSuite, duplicatesTest) {
     bst->print();
     EXPECT_EQ(testing::internal::GetCapturedStdout(),"2 3 4 4 5 6 \n");
 }
+
+TEST(BSTSuite, noDuplicatesTest) {
+    testing::internal::CaptureStdout();
+    auto bst = std::make_unique<myds::BinarySearchTree<int>>();
+    bst->insert( 4, 3, 5, 6, 2);
+    bst->insert(4);
+    bst->print();
+    EXPECT_EQ(testing::internal::GetCapturedStdout(),"2 3 4 5 6 \n");
+}
