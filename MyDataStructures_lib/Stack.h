@@ -13,7 +13,7 @@ namespace myds {
             stack = std::make_unique<LinkedList<T>>();
         }
 
-        void push(T data) {
+        void push(const T& data) {
             stack->addLast(data);
         }
 
@@ -27,7 +27,7 @@ namespace myds {
             return data;
         }
 
-        T peek() {
+        T peek() const {
             if ( isEmpty() ) {
                 std::cerr << "Nothing to peek." << std::endl;
                 return NULL;
@@ -39,11 +39,11 @@ namespace myds {
             while (!isEmpty()) pop();
         }
 
-        int getSize(){
+        [[nodiscard]] int getSize() const {
             return stack->getSize();
         }
 
-        bool isEmpty(){
+        [[nodiscard]] bool isEmpty() const {
             return stack->isEmpty();
         }
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <iostream>
 
 namespace myds {
 
@@ -14,11 +15,11 @@ namespace myds {
     class LinkedList {
     public:
 
-        void add(T data) {
+        void add(const T& data) {
             add(size, data);
         }
 
-        void add(int idx, T data) {
+        void add(const int idx, const T& data) {
             if (idx > size || idx < 0) {
                 std::cerr << "Index out of bounds." << std::endl;
                 return;
@@ -39,13 +40,13 @@ namespace myds {
             size++;
         }
 
-        void addFirst(T data) {
+        void addFirst(const T& data) {
             add(0, data);
         }
 
-        void addLast(T data) { add(data);}
+        void addLast(const T& data) { add(data);}
 
-        T get(int idx) {
+        T get(const int idx) const{
             if (idx > size || idx < 0)  {
                 std::cerr << "Index out of bounds." << std::endl;
                 return NULL;
@@ -58,7 +59,7 @@ namespace myds {
             }
         }
 
-        void deleteAt(int idx) {
+        void deleteAt(const int idx) {
             if (idx >= size || idx < 0)  {
                 std::cerr << "Index out of bounds." << std::endl;
                 return;
@@ -77,7 +78,7 @@ namespace myds {
 
         [[nodiscard]] int getSize() const { return size;}
 
-        bool isEmpty() { return size==0;}
+        [[nodiscard]] bool isEmpty() const { return size==0;}
 
     private:
         std::shared_ptr<Node<T>> head = nullptr;

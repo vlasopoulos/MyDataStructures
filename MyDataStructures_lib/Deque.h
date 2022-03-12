@@ -13,11 +13,11 @@ namespace myds {
             deque = std::make_unique<LinkedList<T>>();
         }
 
-        void pushFront(T data) {
+        void pushFront(const T& data) {
             deque->addFirst(data);
         }
 
-        void pushBack(T data) {
+        void pushBack(const T& data) {
             deque->addLast(data);
         }
 
@@ -41,7 +41,7 @@ namespace myds {
             return data;
         }
 
-        T peekFront() {
+        T peekFront() const {
             if ( isEmpty() ) {
                 std::cerr << "Nothing to peek." << std::endl;
                 return NULL;
@@ -49,7 +49,7 @@ namespace myds {
             return deque->get(0);
         }
 
-        T peekBack() {
+        T peekBack() const {
             if ( isEmpty() ) {
                 std::cerr << "Nothing to peek." << std::endl;
                 return NULL;
@@ -61,11 +61,11 @@ namespace myds {
             while (!isEmpty()) popFront();
         }
 
-        int getSize(){
+        int getSize() const {
             return deque->getSize();
         }
 
-        bool isEmpty(){
+        bool isEmpty() const {
             return deque->isEmpty();
         }
 
