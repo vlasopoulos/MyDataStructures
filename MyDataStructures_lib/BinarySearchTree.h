@@ -119,12 +119,12 @@ namespace myds{
             allowDuplicates = b;
         }
 
-        void print() {
+        void print() const{
             printInOrder(root);
             std::cout << std::endl;
         }
 
-        void print(Traversal t) {
+        void print(const Traversal t) const{
             switch (t) {
                 case Traversal::INORDER:
                     printInOrder(root);
@@ -142,7 +142,7 @@ namespace myds{
             std::cout << std::endl;
         }
 
-        void printInOrder(std::shared_ptr<TreeNode<T>> currentNode) {
+        void printInOrder(const std::shared_ptr<TreeNode<T>> currentNode) const {
             if (currentNode != nullptr) {
                 printInOrder(currentNode->leftChild);
                 std::cout << currentNode->data << ' ';
@@ -150,7 +150,7 @@ namespace myds{
             }
         }
 
-        void printPreOrder(std::shared_ptr<TreeNode<T>> currentNode) {
+        void printPreOrder(const std::shared_ptr<TreeNode<T>> currentNode) const{
             if (currentNode != nullptr) {
                 std::cout << currentNode->data << ' ';
                 printPreOrder(currentNode->leftChild);
@@ -158,7 +158,7 @@ namespace myds{
             }
         }
 
-        void printPostOrder(std::shared_ptr<TreeNode<T>> currentNode) {
+        void printPostOrder(const std::shared_ptr<TreeNode<T>> currentNode) const{
             if (currentNode != nullptr) {
                 printPostOrder(currentNode->leftChild);
                 printPostOrder(currentNode->rightChild);
