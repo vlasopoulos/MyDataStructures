@@ -7,9 +7,6 @@ namespace myds{
 
     template <typename T>
     struct TreeNode {
-        ~TreeNode(){
-            std::cout << "deleting node with data " << data << std::endl;
-        }
         T data;
         std::shared_ptr<TreeNode<T>> leftChild = nullptr;
         std::shared_ptr<TreeNode<T>> rightChild = nullptr;

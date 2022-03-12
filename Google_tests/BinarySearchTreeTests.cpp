@@ -47,6 +47,12 @@ TEST(BSTSuite, removeTest) {
     EXPECT_EQ(bst->contains(5), true);
     EXPECT_EQ(bst->contains(7), true);
     EXPECT_EQ(bst->contains(6), false);
+    //remove root
+    bst->remove(4);
+    EXPECT_EQ(bst->contains(3), true);
+    EXPECT_EQ(bst->contains(5), true);
+    EXPECT_EQ(bst->contains(7), true);
+    EXPECT_EQ(bst->contains(4), false);
 }
 
 TEST(BSTSuite, removeNotFoundTest) {
