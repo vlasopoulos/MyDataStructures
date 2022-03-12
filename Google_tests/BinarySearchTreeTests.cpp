@@ -86,3 +86,13 @@ TEST(BSTSuite, postOrderPrintTest){
     bst->print(myds::Traversal::POSTORDER);
     EXPECT_EQ(testing::internal::GetCapturedStdout(),"2 3 5 7 6 4 \n");
 }
+
+TEST(BSTSuite, duplicatesTest) {
+    testing::internal::CaptureStdout();
+    auto bst = std::make_unique<myds::BinarySearchTree<int>>();
+    bst->insert( 4, 3, 5, 6, 2);
+    bst->setAllowDuplicates(true);
+    bst->insert(4);
+    bst->print();
+    EXPECT_EQ(testing::internal::GetCapturedStdout(),"2 3 4 4 5 6 \n");
+}

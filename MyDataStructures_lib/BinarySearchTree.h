@@ -122,6 +122,7 @@ namespace myds{
 
         void print() {
             printInOrder(root);
+            std::cout << std::endl;
         }
 
         void print(Traversal t) {
