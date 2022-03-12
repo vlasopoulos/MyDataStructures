@@ -102,7 +102,7 @@ namespace myds{
             }
         }
 
-        //Variadic overload of insert
+        //Variadic overload of remove
         template <std::same_as<T> ... Ts>
         void remove(const T& data, const Ts& ... ts) {
             remove(data);
