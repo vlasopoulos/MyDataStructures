@@ -19,7 +19,6 @@ namespace myds{
     public:
 
         void insert(const T& data) {
-
             if (root == nullptr) {
                 root = std::make_shared<TreeNode<T>>();
                 root->data = data;
